@@ -17,7 +17,7 @@ services:
     restart: always
     image: mysql:5.7.20
     command: mysqld --sql_mode="" --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumns:
+    volumes:
       - db_data:/var/lib/mysql
     enviroment:
       - MYSQL_ROOT_PASSWORD=Zcj123456
@@ -27,4 +27,5 @@ services:
     ports:
       - "3306:3306"
 
-  
+volumes:
+  db_data:
