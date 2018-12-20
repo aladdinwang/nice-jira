@@ -1,0 +1,30 @@
+version: '3'
+services:
+  jira:
+    container_name: jira
+    restart: on-failure
+    build:
+      conext: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  mysql:
+    hostname: mysql
+    container_name: jira_mysql
+    restart: always
+    image: mysql:5.7.20
+    command: mysqld --sql_mode="" --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumns:
+      - db_data:/var/lib/mysql
+    enviroment:
+      - MYSQL_ROOT_PASSWORD=Zcj123456
+      - MYSQL_DATABASE=jira
+      - MYSQL_USER=jira
+      - MYSQL_PASSWORD=jira
+    ports:
+      - "3306:3306"
+
+  
