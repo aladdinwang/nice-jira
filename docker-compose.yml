@@ -4,7 +4,7 @@ services:
     container_name: jira
     restart: on-failure
     build:
-      conext: .
+      context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -19,7 +19,7 @@ services:
     command: mysqld --sql_mode="" --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - db_data:/var/lib/mysql
-    enviroment:
+    environment:
       - MYSQL_ROOT_PASSWORD=Zcj123456
       - MYSQL_DATABASE=jira
       - MYSQL_USER=jira
